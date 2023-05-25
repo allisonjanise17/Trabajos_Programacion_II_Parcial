@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Proveedores</h1>
+        <a class="btn btn-success btn-sm" href="{% url 'agregar_proveedor' %}">Agregar</a> 
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>RTN</th>
+            <th>NOMBRE</th>
+            <th>CORREO</th>
+            <th>TELEFONO</th>
+            <th>ACCIONES</th>
+        </tr>
+        {% for proveedor in proveedores %}
+            <tr>
+                <td>{{proveedor.rtn}}</td>
+                <td>{{proveedor.name}}</td>
+                <td>{{proveedor.email}}</td>
+                <td>{{proveedor.phone}}</td>
+
+                <td>
+                    <div class="gap-2 d-flex justify-content-end">
+                        <a href="{% url 'actualizar_proveedor' proveedor.uuid %}" class="btn btn-warning btn-sm">Modificar</a>
+                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
+                
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+{% endblock %}

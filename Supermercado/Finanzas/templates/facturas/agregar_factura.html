@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Agregar Facturas</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                {{form.client.label_tag}}
+                {{form.rtn}}
+            </div>
+        </div>
+        <button class="btn btn-info mt-2">Guardar</button>
+    </form>
+
+{% endblock %}

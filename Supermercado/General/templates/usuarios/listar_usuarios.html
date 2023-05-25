@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Usuarios</h1>
+    <a class="btn btn-success btn-sm" href="{% url 'agregar_clientes' %}">Agregar</a> 
+</div>
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{usuario.person}}</td>
+            <td>{{usuario.position}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.phone}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

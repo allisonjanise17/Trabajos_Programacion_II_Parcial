@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Productos</h1>
+    <a class="btn btn-success btn-sm" href="{% url 'agregar_cargos' %}">Agregar</a> 
+</div>
+
+    <table class="table">
+        <tr>
+            <th>NOMBRE</th>
+            <th>PRECIO</th>
+            <th>Proveedor</th>
+            <th>ACCIONES</th>
+        </tr>
+        {% for producto in productos %}
+            <tr>
+                <td>{{producto.name}}</td>
+                <td>L. {{producto.price}}</td>
+                <td>{{producto.provider}}</td>
+
+                <td><a href="{% url 'obtener_producto_por_uuid' producto.uuid %}">Ver...</a>
+                    <div class="gap-2 d-flex justify-content-end">
+                        <a href="{% url 'actualizar_producto' producto.uuid %}" class="btn btn-warning btn-sm">Modificar</a>
+                        <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+{% endblock %}
